@@ -1,12 +1,10 @@
 const knex = require("../database/knex");
 
-const AppError = require("../utils/AppError");
-
 class PlatesController {
     async create(request, response) {
         const { title, description, ingredients } = request.body;
  
-        const {plate_id} = await knex("plates").insert({
+        const [plate_id] = await knex("plates").insert({
             title, description, ingredients
         });
         
@@ -20,7 +18,7 @@ class PlatesController {
 
         await knex("ingredients").insert(ingredientsInsert);
     
-        response.json()
+        response.json();
 
     }
 };
