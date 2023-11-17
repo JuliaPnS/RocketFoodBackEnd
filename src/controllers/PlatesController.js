@@ -33,6 +33,21 @@ class PlatesController {
             ingredients,
         });
     }
+
+    async delete(request, response) {
+        const { id } = request.params;
+
+        await knex("plates").where({ id }).delete();
+
+        return response.json();
+    }
+
+    async index(request, response) {
+
+        const plates = await knex("plates").orderBy("title");
+
+        return response.json({ plates })
+    }
 };
 
 module.exports = PlatesController;
