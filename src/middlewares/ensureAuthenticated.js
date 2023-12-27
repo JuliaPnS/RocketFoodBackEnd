@@ -20,7 +20,7 @@ function ensureAuthenticated(request, response, next) {
 
         return next();
 
-    }catch {
+    } catch {
         throw new AppError("JWT token inválido", 401);
     }
 }
