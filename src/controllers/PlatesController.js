@@ -1,4 +1,7 @@
 const knex = require("../database/knex");
+const AppError = require("../utils/AppError");
+const DiskStorage = require("../providers/DiskStorage");
+
 
 class PlatesController {
     async create(request, response) {
@@ -48,6 +51,7 @@ class PlatesController {
 
         return response.json({ plates })
     }
+   
 };
 
 module.exports = PlatesController;
