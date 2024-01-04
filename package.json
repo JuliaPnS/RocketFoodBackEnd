@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node ./src/server.js",
     "dev": "nodemon ./src/server.js",
-    "migrate": "knex migrate:latest"
+    "migrate": "knex migrate:latest",
+    "debug": "nodemon --nolazy --inspect-brk=5858 ./src/server.js"
   },
   "keywords": [],
   "author": "",

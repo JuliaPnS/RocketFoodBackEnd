@@ -8,7 +8,7 @@ class PlatesController {
         const { title, description, ingredients } = request.body;
 
         const [plate_id] = await knex("plates").insert({
-            title, 
+            title,
             description,
         });
 
@@ -20,7 +20,7 @@ class PlatesController {
         });
 
         await knex("ingredients").insert(ingredientsInsert);
-    
+
         response.json();
 
     }
@@ -30,7 +30,7 @@ class PlatesController {
 
         const plate = await knex("plates").where({ id }).first();
         const ingredients = await knex("ingredients").where({ plate_id: id }).orderBy("name");
-        
+
         return response.json({
             ...plate,
             ingredients,
@@ -46,12 +46,45 @@ class PlatesController {
     }
 
     async index(request, response) {
+        const { title, ingredients, plate_id } = request.query;
 
-        const plates = await knex("plates").orderBy("title");
+        let plates;
 
-        return response.json({ plates })
+        if (ingredients) {
+            const filterIngredients = ingredients.split(",").map(ingredient => ingredient.trim());
+
+            plates = await knex("ingredients")
+                .select([
+                    "plates.id",
+                    "plates.title",            
+                ])
+                .where("ingredients.plate_id", plate_id)
+                .whereIn("name", filterIngredients)
+                .innerJoin("plates", "plates.id", "ingredients.plate_id")
+                
+
+        } else {
+            plates = await knex("plates")
+                .where({ plate_id: plate_id })
+                .whereLike("title", `%${title}%`)
+                .orderBy("title");
+        }
+
+        const ingredient = await knex("ingredients");
+        const platesWithIngredients = plates.map(plate => {
+
+            const  plateIngredient = ingredient.filter(ingredient => ingredient.plate_id === plate_id);
+        
+            return {
+                ...plate,
+                ingredients: plateIngredient
+            }
+        
+        });
+
+        return response.json(platesWithIngredients)
     }
-   
+
 };
 
 module.exports = PlatesController;
