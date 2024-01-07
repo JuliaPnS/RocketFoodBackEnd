@@ -56,7 +56,7 @@ class PlatesController {
                     "plates.id",
                     "plates.title",
                 ])
-                .whereLike("title", ).orWhereLike("name", `%${search}%`)
+                .whereLike("title",`%${search}%` ).orWhereLike("name", `%${search}%`)
                 .innerJoin("ingredients", "plates.id", "ingredients.plate_id").distinct()
 
         } else {
