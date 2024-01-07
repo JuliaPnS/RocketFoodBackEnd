@@ -46,43 +46,41 @@ class PlatesController {
     }
 
     async index(request, response) {
-        const { title, ingredients, plate_id } = request.query;
+        const { search } = request.query;
 
         let plates;
 
-        if (ingredients) {
-            const filterIngredients = ingredients.split(",").map(ingredient => ingredient.trim());
-
-            plates = await knex("ingredients")
+        if (search) {
+            plates = await knex("plates")
                 .select([
                     "plates.id",
-                    "plates.title",            
+                    "plates.title",
                 ])
-                .where("ingredients.plate_id", plate_id)
-                .whereIn("name", filterIngredients)
-                .innerJoin("plates", "plates.id", "ingredients.plate_id")
-                
+                .whereLike("title", %${search}%).orWhereLike("name", %${search}%)
+                .innerJoin("ingredients", "plates.id", "ingredients.plate_id").distinct()
 
         } else {
             plates = await knex("plates")
-                .where({ plate_id: plate_id })
-                .whereLike("title", `%${title}%`)
                 .orderBy("title");
         }
 
-        const ingredient = await knex("ingredients");
-        const platesWithIngredients = plates.map(plate => {
+            plates = plates.map(plate => {
 
-            const  plateIngredient = ingredient.filter(ingredient => ingredient.plate_id === plate_id);
-        
-            return {
-                ...plate,
-                ingredients: plateIngredient
+             async function getIngredients(plate_id) {
+                let ingredients =  await knex("ingredients").select("name").where("plate_id", plate_id)
+
+                    return ingredients
             }
-        
-        });
+            return {
+                "id": plate.id,
+                "title": plate.title,
+                "ingredients": getIngredients(plate.id)
+            }
+           
+            
+        })
 
-        return response.json(platesWithIngredients)
+        return response.json(plates)
     }
 
 };
