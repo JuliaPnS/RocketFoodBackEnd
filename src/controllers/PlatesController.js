@@ -1,15 +1,25 @@
 const knex = require("../database/knex");
 const AppError = require("../utils/AppError");
-const DiskStorage = require("../providers/DiskStorage");
 
+function getCategory(category) {
+    let categories= {
+        "refeicoes": "Refeições",
+        "pratosPrincipais": "Pratos Principais",
+        "bebidas": "Bebidas",
+        "sobremesas": "Sobremesas"
+    }
+
+    return categories[category]
+}
 
 class PlatesController {
     async create(request, response) {
-        const { title, description, ingredients } = request.body;
+        const { title, description, ingredients, category } = request.body;
 
         const [plate_id] = await knex("plates").insert({
             title,
             description,
+            category,
         });
 
         const ingredientsInsert = ingredients.map(name => {
@@ -56,7 +66,7 @@ class PlatesController {
                     "plates.id",
                     "plates.title",
                 ])
-                .whereLike("title",`%${search}%` ).orWhereLike("name", `%${search}%`)
+                .whereLike("title", `%${search}%`).orWhereLike("name", `%${search}%`)
                 .innerJoin("ingredients", "plates.id", "ingredients.plate_id").distinct()
 
         } else {
@@ -64,20 +74,26 @@ class PlatesController {
                 .orderBy("title");
         }
 
-            plates = plates.map(plate => {
+        let ingredients = await knex("ingredients")
+        plates = plates.map(plate => {
 
-             async function getIngredients(plate_id) {
-                let ingredients =  await knex("ingredients").select("name").where("plate_id", plate_id)
+            let filteredIngredients = ingredients.filter(ingredient => {
+               return ingredient.plate_id == plate.id
+    
+                
+            })
 
-                    return ingredients
-            }
             return {
                 "id": plate.id,
                 "title": plate.title,
-                "ingredients": getIngredients(plate.id)
+                "ingredients": filteredIngredients,
+                "price": plate.price,
+                "description": plate.description,
+                "image": `http://localhost:3337/files/${plate.image}`,
+                "category": getCategory(plate.category)
             }
-           
-            
+
+
         })
 
         return response.json(plates)

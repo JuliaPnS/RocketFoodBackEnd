@@ -17,8 +17,8 @@ const upload = multer(uploadConfig.MULTER);
 
 platesRoutes.post("/", platesController.create);
 platesRoutes.get("/", platesController.index);
-platesRoutes.get("/:plate_id", platesController.show);
-platesRoutes.delete("/plate_:id", platesController.delete);
-platesRoutes.patch("/plateImage/plate_:id", ensureAuthenticated, upload.single("image"), imagePlateController.update);
+platesRoutes.get("/:id", platesController.show);
+platesRoutes.delete("/:id", platesController.delete);
+platesRoutes.patch("/plateImage/:id", ensureAuthenticated, upload.single("image"), imagePlateController.update);
 
 module.exports = platesRoutes;
