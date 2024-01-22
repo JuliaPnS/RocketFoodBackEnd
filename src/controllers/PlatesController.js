@@ -14,12 +14,13 @@ function getCategory(category) {
 
 class PlatesController {
     async create(request, response) {
-        const { title, description, ingredients, category } = request.body;
+        const { title, description, ingredients, category, price } = request.body;
 
         const [plate_id] = await knex("plates").insert({
             title,
             description,
             category,
+            price
         });
 
         const ingredientsInsert = ingredients.map(name => {
@@ -31,8 +32,7 @@ class PlatesController {
 
         await knex("ingredients").insert(ingredientsInsert);
 
-        response.json();
-
+        return response.json({id: plate_id});
     }
 
     async show(request, response) {
