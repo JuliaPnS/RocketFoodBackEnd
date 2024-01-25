@@ -65,6 +65,9 @@ class PlatesController {
                 .select([
                     "plates.id",
                     "plates.title",
+                    "plates.image",
+                    "plates.description",
+                    "plates.price"
                 ])
                 .whereLike("title", `%${search}%`).orWhereLike("name", `%${search}%`)
                 .innerJoin("ingredients", "plates.id", "ingredients.plate_id").distinct()
@@ -79,9 +82,10 @@ class PlatesController {
 
             let filteredIngredients = ingredients.filter(ingredient => {
                return ingredient.plate_id == plate.id
-    
-                
+       
             })
+
+            console.log(plates)
 
             return {
                 "id": plate.id,
@@ -92,6 +96,7 @@ class PlatesController {
                 "image": `http://localhost:3337/files/${plate.image}`,
                 "category": getCategory(plate.category)
             }
+
 
 
         })

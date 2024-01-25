@@ -22,77 +22,77 @@ const config = {
 const database = knex(config.development);
 
 const plates = [
-    {
+     {
         title: 'Salada Ravanello',
         price: 49.97,
-        description: 'Monica',
+        description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
         category: 'refeicoes',
-        ingredients: ['cebola', 'batata', 'tomate', 'alho', 'oregano', 'sal'],
+        ingredients: ['alface', 'cebola', 'pão naan', 'pepino', 'rabanete', 'tomate'],
         image: 'db/image1.png'
     },
     {
         title: 'Spaguetti Gambe',
         price: 79.97,
-        description: 'Monica',
+        description: 'Massa fresca com camarões e pesto',
         category: 'refeicoes',
-        ingredients: ['cebola', 'batata', 'tomate', 'alho', 'oregano', 'sal'],
-        image: 'db/image1.png'
+        ingredients: ['cebola', 'alho','sal', 'camarão', 'molho pesto', 'orégano'],
+        image: 'db/image2.png'
     },
     {
         title: 'Torradas de Parma',
         price: 25.97,
-        description: 'Monica',
+        description: 'Presunto de parma e rúcula em um pão com fermentação natural',
         category: 'refeicoes',
-        ingredients: ['cebola', 'batata', 'tomate', 'alho', 'oregano', 'sal'],
-        image: 'db/image1.png'
+        ingredients: ['pão caseiro', 'presunto parma', 'rúcula'],
+        image: 'db/image3.png'
     },
     {
         title: 'Prugna Pie',
         price: 79.97,
-        description: 'Monica',
+        description: 'Torta de ameixa com massa amanteigada, polvilho em açuçar',
         category: 'sobremesas',
-        ingredients: ['cebola', 'batata', 'tomate', 'alho', 'oregano', 'sal'],
-        image: 'db/image1.png'
+        ingredients: ['ameixa', 'polvilho', 'açúcar', 'massa amanteigada'],
+        image: 'db/image6.png'
     },
     {
         title: 'Peachy Pastrie',
         price: 32.97,
-        description: 'Monica',
+        description: 'Delicioso folheado de pêssego com folhas de hortelã',
         category: 'sobremesas',
-        ingredients: ['cebola', 'batata', 'tomate', 'alho', 'oregano', 'sal'],
-        image: 'db/image1.png'
+        ingredients: ['massa folheada', 'pêssego', 'tomate cereja', 'hortelã'],
+        image: 'db/image5.png'
     },
     {
         title: 'Macarons',
         price: 79.97,
-        description: 'Monica',
+        description: 'Farinhas de amêndoas, manteiga, claras e açúcar',
         category: 'sobremesas',
-        ingredients: ['cebola', 'batata', 'tomate', 'alho', 'oregano', 'sal'],
-        image: 'db/image1.png'
+        ingredients: ['manteiga', 'amêndoas', 'claras', 'açúcar'],
+        image: 'db/image4.png'
     },
     {
         title: 'Espresso',
         price: 15.97,
-        description: 'Oie',
+        description: 'Café cremoso feito na temperatura e pressões perfeitas',
         category: 'bebidas',
-        ingredients: ['cebola', 'batata', 'tomate', 'alho', 'oregano', 'sal'],
-        image: 'db/image1.png'
+        ingredients: ['café'],
+        image: 'db/image7.png'
     },
     {
         title: 'Suco de Maracujá',
         price: 13.97,
-        description: 'Oie',
+        description: 'Suco de maracujá gelado, cremoso e docinho',
         category: 'bebidas',
-        ingredients: ['cebola', 'batata', 'tomate', 'alho', 'oregano', 'sal'],
-        image: 'db/image1.png'
+        ingredients: ['maracujá', 'gelo', 'açúcar'],
+        image: 'db/image8.png'
     },
     {
         title: 'Tè d autunno',
         price: 19.97,
-        description: 'Oie',
+        description: 'Chá de anis, canela e limão. Sinta o outono italiano',
         category: 'bebidas',
-        ingredients: ['cebola', 'batata', 'tomate', 'alho', 'oregano', 'sal'],
-        image: 'db/image1.png'
+        ingredients: ['Limão', 'anis', 'canela'],
+        image: 'db/image9.png'
     }
 ]
 
