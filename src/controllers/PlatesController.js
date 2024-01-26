@@ -1,6 +1,7 @@
 const knex = require("../database/knex");
 const AppError = require("../utils/AppError");
 
+
 function getCategory(category) {
     let categories= {
         "refeicoes": "Refeições",
@@ -44,6 +45,7 @@ class PlatesController {
         return response.json({
             ...plate,
             ingredients,
+            image: `http://localhost:3337/files/${plate.image}`
         });
     }
 
@@ -84,9 +86,6 @@ class PlatesController {
                return ingredient.plate_id == plate.id
        
             })
-
-            console.log(plates)
-
             return {
                 "id": plate.id,
                 "title": plate.title,
