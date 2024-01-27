@@ -60,6 +60,7 @@ No futuro, será feito refatorações e acréscimo de novas funcionalidades, com
 - Edição de pratos já criados
 - Busca por nome do prato ou ingrediente nas demais telas (sem ser na Home e Menu)
 - Criação das páginas de pedido e favorito
+- Logout
   
 ## Roadmap
 As melhorias serão feitas na seguinte ordem:
@@ -69,6 +70,7 @@ As melhorias serão feitas na seguinte ordem:
 - Adicionar número de pratos pelo input
 - Fazer pedido
 - Busca por nome do prato ou ingrediente nas demais telas
+- Logout
 
 ## O Deploy
 Foi feito no https://render.com/
