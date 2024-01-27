@@ -76,6 +76,8 @@ As melhorias serão feitas na seguinte ordem:
 Foi feito no https://render.com/
 
 ## Para acessar
+Entre: https://main--majestic-tarsier-fa2f7a.netlify.app/
+
 Usuário Comum
 Login: anajulia@gmail.com
 Senha: 123
