@@ -13,6 +13,10 @@ class UsersController {
             throw new AppError("Esse e-mail já está cadastrado!");
         }
 
+        if(password.length < 6) {
+            throw new AppError("A senha precisa ter no mínimo 6 caracteres")
+        }
+
         const hashedPassword = await hash(password, 8);
 
         await database.run("INSERT INTO users (name, email, password) VALUES (?, ?, ?)",

@@ -1,7 +1,6 @@
 const knex = require("../database/knex");
 const AppError = require("../utils/AppError");
 
-
 function getCategory(category) {
     let categories= {
         "refeicoes": "Refeições",
