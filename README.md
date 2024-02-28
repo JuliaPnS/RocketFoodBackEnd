@@ -43,6 +43,9 @@ Inicie o aplicativo
 
 *Produção*
   npm run start
+
+*Seeds
+npm run seed
 ```
 
 ## Variáveis de Ambiente
