@@ -86,7 +86,7 @@ Login: anajulia@gmail.com
 Senha: 123
 
 Usuário Admin
-Login: noah.camargo@gmail.com
+Login: noah@gmail.com
 Senha: 123
 
 ## Screenshots
