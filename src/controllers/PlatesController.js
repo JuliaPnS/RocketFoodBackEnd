@@ -12,6 +12,12 @@ function getCategory(category) {
     return categories[category]
 }
 
+function buildImageUrl(path) {
+    const host = process.env.SERVER_ENV == "prod" ? "https://rocketfood-api-wwmt.onrender.com" : "http://localhost:3337"
+
+    return `${host}/${path}`
+}
+
 class PlatesController {
     async create(request, response) {
         const { title, description, ingredients, category, price } = request.body;
@@ -44,7 +50,7 @@ class PlatesController {
         return response.json({
             ...plate,
             ingredients,
-            image: `http://localhost:3337/files/${plate.image}`
+            image: buildImageUrl(`files/${plate.image}`)
         });
     }
 
@@ -91,7 +97,7 @@ class PlatesController {
                 "ingredients": filteredIngredients,
                 "price": plate.price,
                 "description": plate.description,
-                "image": `http://localhost:3337/files/${plate.image}`,
+                "image": buildImageUrl(`files/${plate.image}`),
                 "category": getCategory(plate.category)
             }
 
