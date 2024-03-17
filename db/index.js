@@ -46,6 +46,7 @@ const plates = [
         ingredients: ['pão caseiro', 'presunto parma', 'rúcula'],
         image: 'db/image3.png'
     },
+
     {
         title: 'Prugna Pie',
         price: 79.97,
@@ -93,7 +94,8 @@ const plates = [
         category: 'bebidas',
         ingredients: ['Limão', 'anis', 'canela'],
         image: 'db/image9.png'
-    }
+    },
+    
 ]
 
 plates.map(plate => {
