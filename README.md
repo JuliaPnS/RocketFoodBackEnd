@@ -83,11 +83,11 @@ Entre: https://main--majestic-tarsier-fa2f7a.netlify.app/
 
 Usuário Comum
 Login: anajulia@gmail.com
-Senha: 123
+Senha: 123456
 
 Usuário Admin
 Login: noah@gmail.com
-Senha: 123
+Senha: 123456
 
 ## Autores
 - [@JuliaPnS](https://github.com/JuliaPnS)
