@@ -89,13 +89,6 @@ Usuário Admin
 Login: noah@gmail.com
 Senha: 123
 
-## Screenshots
-![App Screenshot](https://via.placeholder.com/468x300?text=RocketFood\Prints\print1.png)
-
-![App Screenshot](https://via.placeholder.com/468x300?text=RocketFood\Prints\print2.png)
-
-![App Screenshot](https://via.placeholder.com/468x300?text=RocketFood\Prints\print3.png)
-
 ## Autores
 - [@JuliaPnS](https://github.com/JuliaPnS)
 
